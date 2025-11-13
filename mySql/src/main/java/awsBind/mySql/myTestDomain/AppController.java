@@ -1,10 +1,7 @@
 package awsBind.mySql.myTestDomain;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -34,12 +31,13 @@ public class AppController {
     }
 
     @PostMapping("/boards")
-    public ResponseEntity<Board> createBoard(@PathVariable String title, @PathVariable String content){
+    public ResponseEntity<Board> createBoard(
+            @RequestParam String title,
+            @RequestParam String content) {
 
         Board board = new Board(title, content);
         Board saved = boardRepository.save(board);
-
-        return  ResponseEntity.ok(saved);
-
+        return ResponseEntity.ok(saved);
     }
+    
 }
