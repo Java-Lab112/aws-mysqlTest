@@ -33,7 +33,7 @@ public class AppController {
         return ResponseEntity.ok().body(boards);
     }
 
-    @PostMapping("{/title}/{content}")
+    @PostMapping("/boards")
     public ResponseEntity<Board> createBoard(@PathVariable String title, @PathVariable String content){
 
         Board board = new Board(title, content);
